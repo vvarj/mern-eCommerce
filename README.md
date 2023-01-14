@@ -11,3 +11,7 @@
    1. npm i react-router-dom
    2. create route for home screen
    3. create router for product screen
+7. Create Node.Js Server
+   1. Update package.json set type: module (for es6)
+   2. Nodemon for dev dependency --> npm install nodemon --save-dev
+   3. Add "start" command/any other command in script for nodemon
