@@ -15,3 +15,9 @@
    1. Update package.json set type: module (for es6)
    2. Nodemon for dev dependency --> npm install nodemon --save-dev
    3. Add "start" command/any other command in script for nodemon
+8. Fetch Products From Backend
+   1. set proxy in package.json - in the frontend
+   2. npm install axios
+   3. use state hook
+   4. use effect hook
+   5. use reducer hook
