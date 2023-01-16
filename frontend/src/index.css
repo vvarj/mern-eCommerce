@@ -17,6 +17,12 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 }
+.rating span{
+  color: #ffc000;
+}
+.rating .num-reviews{
+  color: #000000;
+}
 .product{
   border: 1px rgba(40, 40, 40) solid;
   margin: 1rem;
