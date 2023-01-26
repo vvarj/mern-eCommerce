@@ -48,3 +48,7 @@
 15. Complete add to cart
     1. check exist item in the cart
     2. check count in stock in backend
+16. Create cart screen
+    1. create 2 columns
+    2. display items list
+    3. create action column
