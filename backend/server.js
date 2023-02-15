@@ -1,45 +1,25 @@
 import express from "express";
 import data from "./data.js";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
+import connectDB from "./db/connect.js";
+import seedRouter from "./routes/seedRoutes.js";
+import productRouter from "./routes/productRoutes.js";
 
 dotenv.config();
-
-mongoose
-  .connect(process.env.MONGODB_URI, {}, mongoose.set("strictQuery", false))
-  .then(() => {
-    console.log("Connected to db");
-  })
-  .catch((e) => {
-    console.log("DB ERROR:", e);
-  });
-
+const port = process.env.PORT || 5000;
 const app = express();
 
-app.get("/api/products", (req, res) => {
-  res.status(200).send(data.products);
-});
+app.use("/api/seed", seedRouter);
+app.use("/api/products", productRouter);
 
-app.get("/api/products/slug/:slug", (req, res) => {
-  const product = data.products.find((x) => x.slug === req.params.slug);
-  if (product) {
-    res.status(200).send(product);
-  } else {
-    res.status(404).send({ message: "Product not found" });
+const start = async () => {
+  try {
+    //connectDB
+    await connectDB(process.env.MONGODB_URI);
+    app.listen(port, console.log(`serve at port http://localhost:${port}`));
+  } catch (error) {
+    console.log(error);
   }
-});
+};
 
-app.get("/api/products/:id", (req, res) => {
-  const product = data.products.find((x) => x._id === req.params.id);
-  if (product) {
-    res.status(200).send(product);
-  } else {
-    res.status(404).send({ message: "Product not found" });
-  }
-});
-
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => {
-  console.log(`serve at port http://localhost:${port}`);
-});
+start();
