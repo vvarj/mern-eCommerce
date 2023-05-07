@@ -63,7 +63,9 @@ const PaymentMethodScreen = () => {
             />
           </div>
           <div className="mb-3">
-            <Button type="submit">Continue</Button>
+            <Button type="submit" className="btn btn-warning">
+              Continue
+            </Button>
           </div>
         </Form>
       </div>
